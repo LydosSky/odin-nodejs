@@ -1,48 +1,48 @@
-const https = require("https");
+const https = require('https');
 
 const options = {
-  hostname: "example.com",
+  hostname: 'example.com',
   port: 443,
-  path: "/todos",
-  method: "GET",
+  path: '/todos',
+  method: 'GET',
 };
 
 const req = https.request(options, (res) => {
   console.log(`statusCode: ${res.statusCode}`);
-  res.on("data", (d) => {
+  res.on('data', (d) => {
     process.stdout.write(d);
   });
 });
 
-req.on("error", (error) => {
+req.on('error', (error) => {
   console.log(error);
 });
 
 req.end();
 
 const data = JSON.stringify({
-  todo: "Buy the milk",
+  todo: 'Buy the milk',
 });
 
 const options = {
-  hostname: "whatever.com",
+  hostname: 'whatever.com',
   port: 443,
-  path: "/todos",
+  path: '/todos',
   headers: {
-    "Content-Type": "application/json",
-    "Content-Length": data.length,
+    'Content-Type': 'application/json',
+    'Content-Length': data.length,
   },
 };
 
 const req = https.request(options, (res) => {
   console.log(`statusCode: ${res.statusCode}`);
 
-  res.on("data", (d) => {
+  res.on('data', (d) => {
     porcess.stdout.write(d);
   });
 });
 
-req.on("error", (error) => {
+req.on('error', (error) => {
   console.log(error);
 });
 
