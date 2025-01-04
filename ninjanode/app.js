@@ -1,23 +1,13 @@
 const express = require('express');
 const app = express();
+const blogs = require('./blogs');
+const morgan = require('morgan');
 
 app.set('view engine', 'ejs');
 
 app.listen(3000);
-const blogs = [
-  {
-    title: 'Yoshi finds eggs',
-    snippet: 'Lorem ipsum dolor sit amet consectetur',
-  },
-  {
-    title: 'Mario finds stars',
-    snippet: 'Lorem ipsum dolor sit amet consectetur',
-  },
-  {
-    title: 'How to defeat bowser',
-    snippet: 'Lorem ipsum dolor sit amet consectetur',
-  },
-];
+app.use(express.static('public'));
+app.use(morgan('dev'));
 
 app.get('/', function getHomeCB(req, res) {
   res.render('index', { title: 'Home', blogs });
