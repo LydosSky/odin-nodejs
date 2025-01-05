@@ -20,6 +20,7 @@ mongoose
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 app.get('/add-blog', function addBlogCB(req, res) {
@@ -50,6 +51,40 @@ app.get('/blogs', function getBlogsCB(req, res) {
       res.render('index', { title: 'All Blogs', blogs: result });
     })
     .catch(function findError(err) {
+      console.log(err);
+    });
+});
+
+app.post('/blogs', function addBlogCB(req, res) {
+  const blog = new Blog(req.body);
+  blog
+    .save()
+    .then(function saveSuccess(result) {
+      res.redirect('/');
+    })
+    .catch(function saveError(err) {
+      console.log(err);
+    });
+});
+
+app.get('/blogs/:id', function getBlogCB(req, res) {
+  const id = req.params.id;
+  Blog.findById(id)
+    .then(function findSuccess(result) {
+      res.render('details', { blog: result, title: 'Blog Details' });
+    })
+    .catch(function findError(err) {
+      console.log(err);
+    });
+});
+
+app.delete('/blogs/:id', function deleteBlogCB(req, res) {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then(function deleteSuccess(result) {
+      res.json({ redirect: '/blogs' });
+    })
+    .catch(function deleteError(err) {
       console.log(err);
     });
 });
