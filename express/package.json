@@ -2,9 +2,8 @@
   "name": "express",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
-    "start" : "node --watch app.js"
+    "start": "node --watch app.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +11,7 @@
   "type": "commonjs",
   "description": "",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "express-async-handler": "^1.2.0"
   }
 }
