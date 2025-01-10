@@ -1,10 +1,29 @@
 const express = require('express');
-const app = express();
-
+const path = require('node:path');
 const authorRouter = require('./routes/authorRouter');
 const bookRouter = require('./routes/bookRouter');
 const indexRouter = require('./routes/indexRouter');
 
+const app = express();
+const links = [
+  { href: '/', text: 'Home' },
+  { href: 'about', text: 'About' },
+];
+const users = ['Rose', 'Cake', 'Biff'];
+const assetsPath = path.join(__dirname, 'public');
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.get('/', function (req, res) {
+  res.render('index', { links, users });
+});
+
+app.get('/about', function (req, res) {
+  res.render('about', { links });
+});
+
+app.use(express.static(assetsPath));
 app.use('/authors', authorRouter);
 app.use('/books', bookRouter);
 app.use('/', indexRouter);
