@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <%- include('partials/errors.ejs') %>
+        <form action="/create" method="POST">
+            <label for="firstName">First Name:</label>
+            <input name="firstName" type="text" id="firstName" />
+            <label for="lastName">Last Name:</label>
+            <input name="lastName" type="text" id="lastName"/>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="/">Back to Home</a>
+    </body>
+</html>
