@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <title><%= title %></title>
+        <link href="styles.css" rel="stylesheet"/>
     </head>
     <body>
         <h1><%= title %></h1>
@@ -11,7 +12,10 @@
                 <% users.forEach(user => {%>
                     <li>
                         ID: <%= user.id %>,
-                        Name: <%= user.firstName%> <%= user.lastName %>
+                        Name: <%= user.firstName %> <%= user.lastName %>
+                        Email: <%= user.email %>
+                        Age: <%= user.age %>
+                        Bio: <%= user.bio %>
                     </li>
                     <a href="/<%= user.id  %>/update">Update</a>
                     <form action="/<%= user.id %>/delete"
