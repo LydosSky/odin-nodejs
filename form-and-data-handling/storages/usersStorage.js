@@ -25,6 +25,15 @@ class UsersStorage {
   deleteUser(id) {
     delete this.storage[id];
   }
+
+  searchUser(search) {
+    return this.getUsers().filter(
+      (user) =>
+        user.firstName.includes(search) ||
+        user.lastName.includes(search) ||
+        user.email.includes(search),
+    );
+  }
 }
 
 module.exports = new UsersStorage();

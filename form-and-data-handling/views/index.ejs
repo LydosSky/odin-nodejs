@@ -7,6 +7,11 @@
     </head>
     <body>
         <h1><%= title %></h1>
+        <form  action="/search" method="GET">
+            <input name="search" type="text" placeholder="Search User" />
+            <button type="submit">search</button>
+        </form>
+        <%- include('partials/search.ejs', { searchUsers: locals.searchUsers }) %>
         <ul>
             <% if (locals.users) { %>
                 <% users.forEach(user => {%>
@@ -27,7 +32,7 @@
                         >Delete</button>
                     </form>
                 <% }); %>
-            <% } %>%>
+            <% } %>
         </ul>
         <a href="/create">Create a user</a>
     </body>

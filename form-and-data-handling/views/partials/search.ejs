@@ -1,0 +1,12 @@
+<% if (locals.searchUsers) { %>
+    <p>Search Results</p>
+    <ul>
+        <% searchUsers.forEach(user => {%>
+            <li>
+                Name: <%= user.firstName %> <%= user.lastName %>
+                Email: <%= user.email %>
+            </li>
+        <% }); %>
+    </ul>
+    <hr/>
+<% }  %>
